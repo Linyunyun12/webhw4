@@ -1,0 +1,177 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans TC', Arial, sans-serif;
+  background: #f6f3ee;
+}
+
+.header-bar {
+  display: flex;
+  align-items: center;
+  background: #f4dcb6;
+  padding: 18px 32px;
+  border-bottom: 2px solid #e8e6ee;
+  box-shadow: 0 2px 8px #0001;
+  flex-wrap: wrap;
+}
+
+.logo {
+  height: 50px;
+  margin-right: 18px;
+}
+
+.main-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #d72631;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.product-intro {
+  background: #f8eed0;
+  border: 1.5px solid #e0c48c;
+  border-radius: 10px;
+  margin: 24px auto 18px auto;
+  max-width: 600px;
+  padding: 18px 28px;
+  box-shadow: 0 2px 8px #0001;
+}
+
+.product-intro h2 {
+  color: #d72631;
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+.product-intro p {
+  color: #333;
+  font-size: 1.08rem;
+  margin-bottom: 0;
+}
+
+.intro-flex {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: nowrap;  /* 重要：讓大螢幕下不自動換行 */
+}
+
+@media (max-width: 600px) {
+  .intro-flex {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .intro-text {
+    width: 100%;
+  }
+}
+
+
+.intro-img {
+  max-width: 120px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 2px 8px #0001;
+}
+
+.db-section {
+  padding: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+form#insertForm, form#sortForm {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 18px 0;
+  flex-wrap: wrap;
+}
+
+form label {
+  font-weight: 500;
+  color: #333;
+}
+
+form input, form select {
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+  font-size: 1rem;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+button, input[type="submit"] {
+  background: #d72631;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 18px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+button:hover, input[type="submit"]:hover {
+  background: #a91d22;
+  box-shadow: 0 2px 4px #0002;
+}
+
+table#quotesTable {
+  margin: 0 auto 32px auto;
+  border-collapse: collapse;
+  width: 90%;
+  background: #fff;
+  box-shadow: 0 2px 12px #0001;
+}
+
+table#quotesTable th, table#quotesTable td {
+  border: 1px solid #e0e0e0;
+  padding: 8px 12px;
+  text-align: center;
+}
+
+table#quotesTable th {
+  background: #d72631;
+  color: #fff;
+  font-weight: 700;
+}
+
+table#quotesTable tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+table#quotesTable tr:hover {
+  background: #ffe5e5;
+}
+
+@media (max-width: 600px) {
+  .intro-flex {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  form#insertForm, form#sortForm {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .main-title {
+    font-size: 1.5rem;
+  }
+
+  .product-intro {
+    padding: 16px;
+  }
+}

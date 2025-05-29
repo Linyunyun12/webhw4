@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Red Bull歷年價格查詢</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="header-bar">
+  <img src="redbull.jpg" class="logo" alt="Red Bull Logo"/>
+  <h1 class="main-title">RED BULL 歷年價格查詢</h1>
+</header>
+
+<section class="product-intro">
+  <div class="intro-flex">
+    <img src="image.webp" alt="紅牛商品圖" class="intro-img">
+    <div class="intro-text">
+      <h2>商品介紹</h2>
+      <p>紅牛（Red Bull）是一款全球知名的能量飲料，深受學生、上班族與運動員喜愛。其獨特配方能迅速補充體力與精神，是你熬夜、加班、運動的最佳夥伴！</p>
+    </div>
+  </div>
+</section>
+
+<section class="db-section">
+  <form id="insertForm" autocomplete="off">
+    <label>日期: <input type="date" id="date_time" required></label>
+    <label>價格: <input type="number" id="price" required></label>
+    <button type="submit">新增</button>
+  </form>
+
+  <form id="sortForm">
+    <label>排序依據：
+      <select id="sortField">
+        <option value="date_time">日期</option>
+        <option value="price">價格</option>
+        <option value="id">ID(價格日期)</option>
+      </select>
+    </label>
+    <label>順序：
+      <select id="sortOrder">
+        <option value="DESC">新到舊/高到低</option>
+        <option value="ASC">舊到新/低到高</option>
+      </select>
+    </label>
+    <button type="submit">排序</button>
+  </form>
+
+  <p id="resultMsg"></p>
+
+  <table id="quotesTable">
+    <thead>
+    <tr><th>ID</th><th>日期</th><th>價格</th><th>差價</th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+</section>
+
+<script src="/main.js"></script>
+</body>
+</html>
