@@ -5,7 +5,7 @@ const path = require('path');
 const dbDir = path.join(__dirname, 'db');
 const dbPath = path.join(dbDir, 'sqlite.db');
 
-// 確保 db 目錄存在
+// 確保 db 資料夾存在
 if (!fs.existsSync(dbDir)) {
   fs.mkdirSync(dbDir);
 }
@@ -99,24 +99,26 @@ const priceHistoryData = [
 
 function initializeDatabase() {
   db.serialize(() => {
-    db.run('DROP TABLE IF EXISTS price_history');
-    db.run(`CREATE TABLE price_history (
+    // 建立資料表（若尚未存在）
+    db.run(`CREATE TABLE IF NOT EXISTS price_history (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       date_time TEXT NOT NULL,
-      price INTEGER NOT NULL
+      price INTEGER NOT NULL,
+      quantity INTEGER,
+      UNIQUE(date_time, price)
     )`);
 
-    const insertStmt = db.prepare('INSERT INTO price_history (date_time, price) VALUES (?, ?)');
+    // 插入資料，避免重複
+    const insertStmt = db.prepare('INSERT OR IGNORE INTO price_history (date_time, price, quantity) VALUES (?, ?, ?)');
     priceHistoryData.forEach((entry) => {
-      insertStmt.run(entry.date_time, entry.price);
+      insertStmt.run(entry.date_time, entry.price, entry.quantity || null);
     });
     insertStmt.finalize();
-    console.log('資料庫已初始化');
+
+    console.log('資料庫初始化完成（保留既有資料，避免重複插入）');
   });
 }
-
 
 initializeDatabase();
 
 module.exports = db;
-
